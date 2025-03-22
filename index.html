@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:8000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #fc6736;
+            --secondary-color: #ffa580;
+            --dark-color: #333333;
+            --light-color: #ffffff;
+            --bg-color: #f9f9f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: var(--dark-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+                .project-img {
+            height: 200px;
+            width: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #666;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Main Content Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        h1, h2, h3 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+        }
+        
+        /* Portfolio Items */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-item {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        /* Contact Section */
+        .contact {
+            text-align: center;
+        }
+        .contact-form {
+            max-width: 600px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--light-color);
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .justify-text {
+            text-align: justify;
+        }
+    </style>
+
+<style id="dark-reader-style" type="text/css">@media screen {
+html {-webkit-transition : -webkit-filter 300ms linear;}
+}</style></head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Portfolio</h1>
+            <p>Web Developer &amp; Data Scientist</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="http://127.0.0.1:8000/">Home</a></li>
+            <li><a href="http://127.0.0.1:8000/">About</a></li>
+            <li><a href="http://127.0.0.1:8000/">Portofolio</a></li>
+            <li><a href="http://127.0.0.1:8000/">Skills</a></li>
+            <li><a href="http://127.0.0.1:8000/">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="container">
+            <div class="hero">
+                <div class="hero-text">
+                    <h2>Muhamad Fikry Saputra</h2>
+                    <p>Saya adalah seorang pengembang web dan data scientist yang kreatif dalam menciptakan website yang menarik dan fungsional.</p>
+                    <a href="https://wa.me/6282117493675" class="btn">Contact Me</a>
+                </div>
+                <div class="hero-image">
+                    <img src="./index_files/DSCF9003_copy - Copy.jpg" alt="Muhamad Fikry Saputra" width="300">
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="container">
+            <h2>About Me</h2>
+                    <p class="justify-text">Saya sedang menempuh studi Magister Informatika di Telkom University dengan minat dalam data science. Saya
+                    pernah magang sebagai Web Master di RC AdCNet, di mana saya mengoptimalkan arsitektur web untuk
+                    meningkatkan user experience. Saya memiliki basic bahsa pemrograman Python, Dart, dan JavaScript, serta
+                    memiliki pengalaman menggunakan framework deep learning seperti TensorFlow untuk pengolahan data dan model
+                    prediktif. Saat ini, saya ingin terus berkembang dalam dunia teknologi dan berkontribusi dalam proyek-proyek
+                    inovatif di bidang pengembangan web, mobile, dan data science, serta bergabung dalam dunia industri dan karir
+                    profesional yang aktif berinovasi.</p>
+        </section>
+        
+        <!-- Portfolio Section -->
+        <section id="portofolio" class="container">
+            <h2>My Work</h2>
+            <div class="portofolio-grid" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item"> 
+                    <div>
+                        <img src="./index_files/kopi.jpg" alt="Muhamad Fikry Saputra" width="300">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Coffe Shop Sales</h3>
+                        <p>Proyek ini merupakan proyek data analisis untuk eksplorasi penjualan kopi dari waktu ke waktu. Proyek ini dijalankan dalam Jupyter lab dengan penggunaan kebutuhan untuk analisis.</p>
+                        <a href="https://github.com/fikrysaputra/CoffeeShopSales_Data_Analitycs?tab=readme-ov-file" class="btn">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item">
+                    <div>
+                        <img src="./index_files/unnamed.png" alt="Muhamad Fikry Saputra" width="300">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Car Selling Price Prediction</h3>
+                        <p>Proyek ini memuat sistem prediksi harga mobil dengan pendekatan model BiLSTM dan tambahan attention layer untuk menandai data penting agar prediksi lebih akurat</p>
+                        <a href="https://github.com/fikrysaputra/Car_selling_price_prediction_BiLSTM-attention" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item">
+                    <div>
+                        <img src="./index_files/Screenshot_8.png" alt="Muhamad Fikry Saputra" width="300">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>LockDown99</h3>
+                        <p>Dengan basis Blogger, LockDown99 adalah website yang menyediakan film, musik dan artikel menarik dengan tema teknologi. Namun ada juga artikel menarik mengenai tema selain teknologi.</p>
+                        <a href="http://lockdown99.blogspot.com/" class="btn">Kunjungi Website</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="container">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="skill-item">
+                    <h3>HTML &amp; CSS</h3>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="skill-item">
+                    <h3>JavaScript</h3>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="skill-item">
+                    <h3>Python</h3>
+                </div>
+                
+                <!-- Skill 4 -->
+                <div class="skill-item">
+                    <h3>Visual Data</h3>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="container" style="text-align: center;">
+            <h2>Kontak Saya</h2>
+            <div class="card contact-card" style="text-align: center;">
+                <div class="card-body">
+                    <ul class="contact">
+                        <li>
+                            <a href="https://wa.me/6282117493675" target="_blank">
+                                <i class="bi bi-whatsapp"></i> WhatsApp
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/ffikrys" target="_blank">
+                                <i class="bi bi-instagram"></i> @ffikrys
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:email@example.com">
+                                <i class="bi bi-envelope"></i> fikrysaputran28@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/fikrysaputra">GitHub</a>
+                <a href="https://www.linkedin.com/in/muhamad-fikry-saputra-004953200/">LinkedIn</a>
+                <a href="https://www.instagram.com/ffikrys/">Instagram</a>
+            </div>
+            <p>© 2025 Muhamad Fikry Saputra</p>
+        </div>
+    </footer>
+
+
+</body></html>
