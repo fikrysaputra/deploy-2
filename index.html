@@ -316,6 +316,42 @@
         .justify-text {
             text-align: justify;
         }
+        .contact {
+    text-align: center;
+    }
+    .contact-card {
+        background-color: silver; /* Warna background card /
+        border-radius: 10px;
+        padding: 20px;
+        max-width: 400px;
+        margin: 0 auto;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .contact-list li {
+        margin: 15px 0;
+        font-size: 22px;
+    }
+    .contact-list a {
+        text-decoration: none;
+        color: 
+    #007bff;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center; / Pusatkan teks dan ikon /
+        gap: 15px;
+    }
+    .contact-list a:hover {
+        text-decoration: underline;
+    }
+    .contact-list i {
+        font-size: 32px; / Perbesar ikon */
+    }
     </style>
 
 <style id="dark-reader-style" type="text/css">@media screen {
@@ -437,31 +473,33 @@ html {-webkit-transition : -webkit-filter 300ms linear;}
             </div>
         </section>
         
-        <!-- Contact Section -->
-        <section id="contact" class="container" style="text-align: center;">
-            <h2>Kontak Saya</h2>
-            <div class="card contact-card" style="text-align: center;">
-                <div class="card-body">
-                    <ul class="contact">
-                        <li>
-                            <a href="https://wa.me/6282117493675" target="_blank">
-                                <i class="bi bi-whatsapp"></i> WhatsApp
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/ffikrys" target="_blank">
-                                <i class="bi bi-instagram"></i> @ffikrys
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:email@example.com">
-                                <i class="bi bi-envelope"></i> fikrysaputran28@gmail.com
-                            </a>
-                        </li>
-                    </ul>
+          <!-- Contact Section -->
+            <section id="contact" class="contact">
+                <div class="container text-center">
+                    <h2 class="section-title">Kontak Saya</h2>
+                    <div class="card contact-card">
+                        <div class="card-body">
+                            <ul class="contact-list">
+                                <li>
+                                    <a href="https://wa.me/6282117493675" target="_blank">
+                                        <i class="bi bi-whatsapp"></i> WhatsApp: +62 821-1749-3675
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/ffikrys" target="_blank">
+                                        <i class="bi bi-instagram"></i> Instagram: @ffikrys
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:fikrysaputran28@gmail.com">
+                                        <i class="bi bi-envelope"></i> Email: fikrysaputran28@gmail.com
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
     </main>
     
